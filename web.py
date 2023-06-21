@@ -3,6 +3,8 @@ import functions
 
 todos = functions.get_todos()
 
+st.set_page_config(layout='wide')
+
 
 def add_todo():
     todo = st.session_state["new_todo"] + '\n'
@@ -12,7 +14,9 @@ def add_todo():
 
 st.title("To-do App")
 st.subheader("This is my to-do list app.")
-st.write("This app is to increase your productivity.")
+# using html
+st.write("This app is to increase your <b>productivity</b>.",
+         unsafe_allow_html=True)
 
 st.checkbox("Buy groceries")
 st.checkbox("Throw trash")
