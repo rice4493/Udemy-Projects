@@ -20,17 +20,17 @@ def display_list():
     Display contents of to-do list with complete status
     """
 
-    todos_loc2 = get_todos('List.txt')
+    todos_loc2 = get_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List')
 
     if not todos_loc2:
         print("Your to-do list is empty. Add tasks.")
     else:
         print("\n<---To-do List--->")
-        todos_loc2 = get_todos("List.txt")
 
         for index, item in enumerate(todos_loc2):
             index += 1
             item = item.strip('\n')
             status = '(p)' if not item.endswith('(c)') else ''
             print(f"{index}. {item} {status}")
-        return todos_loc2
+
+    return todos_loc2

@@ -18,11 +18,11 @@ while True:
     if action.startswith("add"):
         task = action[4:]
 
-        Todos = functions.get_todos("List.txt")
+        Todos = functions.get_todos("/Users/yuktanoela/PycharmProjects/UdemyProjects/List")
 
         Todos.append(task + "\n")
 
-        functions.write_todos('List.txt', Todos)
+        functions.write_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List', Todos)
 
     elif action.startswith("display"):
         functions.display_list()
@@ -48,7 +48,7 @@ while True:
 
     elif action.startswith("complete"):
         try:
-            Todos = functions.get_todos('List.txt')
+            Todos = functions.get_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List')
             number = int(action[9:])
             number = number - 1
             removed = Todos[number]
@@ -57,7 +57,7 @@ while True:
                 # Todos[number] = removed + ' (c)'
                 # Completed.append(removed)
 
-                Todos = functions.write_todos("List.txt")
+                Todos = functions.write_todos("/Users/yuktanoela/PycharmProjects/UdemyProjects/List")
 
             else:
                 print("Task already completed.")

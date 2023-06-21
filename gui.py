@@ -9,8 +9,8 @@ clock = sg.Text('', key='clock')
 label = sg.Text("Type in a task")
 input_box = sg.InputText(tooltip="Enter todo", key="Todo")
 add_button = sg.Button("Add")
-list_box = sg.Listbox(values=functions.get_todos(), key='todos',
-                      enable_events=True, size=[45, 10])
+list_box = sg.Listbox(values=functions.get_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List'), key='todos',
+                      enable_events=True, size=(45, 10))
 edit_button = sg.Button("Edit")
 complete_button = sg.Button("Complete")
 exit_button = sg.Button("Exit")
@@ -28,10 +28,10 @@ while True:
     window["clock"].update(value=now)
     match event:
         case "Add":
-            todos = functions.get_todos()
-            new_todo = values['todo'] + '\n'
+            todos = functions.get_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List')
+            new_todo = values['todos'] + '\n'
             todos.append(new_todo)
-            functions.write_todos(todos)
+            functions.write_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List', todos)
             window['todos'].update(values=todos)
         case "Edit":
             try:
@@ -39,19 +39,19 @@ while True:
                 todo_to_edit = values['todos'][0]
                 new_todo = values['Todo']
 
-                todos.functions.get_todos()
+                todos.functions.get_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List')
                 index = todos.index(todo_to_edit)
                 todos[index] = new_todo
-                functions.write_todos(todos)
+                functions.write_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List', todos)
                 window['todos'].update(values=todos)
             except IndexError:
                 sg.popup("Please select an item first.", font=("Helvetica", 20))
         case "Complete":
             try:
                 todo_to_complete = values['todos'][0]
-                todos = functions.get_todos()
+                todos = functions.get_todos('/Users/yuktanoela/PycharmProjects/UdemyProjects/List')
                 todos.remove(todo_to_complete)
-                functions.write(todos)
+                functions.write('/Users/yuktanoela/PycharmProjects/UdemyProjects/List', todos)
                 window['todos'].update(values=todos)
                 window['Todo'].update(value="")
             except IndexError:
