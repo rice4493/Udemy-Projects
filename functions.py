@@ -19,6 +19,9 @@ def display_list():
     """
     Display contents of to-do list with complete status
     """
+
+    todos_loc2 = get_todos('List.txt')
+
     if not todos_loc2:
         print("Your to-do list is empty. Add tasks.")
     else:

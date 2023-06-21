@@ -48,6 +48,7 @@ while True:
 
     elif action.startswith("complete"):
         try:
+            Todos = functions.get_todos('List.txt')
             number = int(action[9:])
             number = number - 1
             removed = Todos[number]
@@ -56,7 +57,7 @@ while True:
                 # Todos[number] = removed + ' (c)'
                 # Completed.append(removed)
 
-                Todos = functions.get_todos("List.txt")
+                Todos = functions.write_todos("List.txt")
 
             else:
                 print("Task already completed.")
