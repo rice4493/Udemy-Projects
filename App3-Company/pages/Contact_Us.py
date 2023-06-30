@@ -8,9 +8,9 @@ df = pandas.read_csv('topics.csv')
 
 with st.form(key='email'):
     user_email = st.text_input("Your email address")
-    user_select = st.selectbox("What topic do you want to discuss?")
     for index, row in df.iterrows():
-        st.selectbox(row['topic'])
+        data = st.selectbox(row['topic'])
+    user_select = st.selectbox("What topic do you want to discuss?", data)
 
     user_message = st.text_area("Your message")
     # message = f"""
