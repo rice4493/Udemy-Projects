@@ -1,6 +1,7 @@
 import streamlit as st
 from smtplib import SMTP_SSL as SMTP
 from email.mime.text import MIMEText
+import re
 
 smtpserver = 'smtp.elasticemail.com'
 sender = 'yukta.noela@outlook.com'
@@ -12,6 +13,12 @@ text_subtype = 'plain'
 st.header("Contact Me")
 
 
+def is_valid(email):
+    regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]'
+                       r'+(\.[A-Z|a-z]{2,})+')
+    return re.fullmatch(regex, email)
+
+
 def disable():
     st.session_state.disabled = True
 
@@ -19,8 +26,11 @@ def disable():
 if "disabled" not in st.session_state:
     st.session_state.disabled = False
 
+user_email = st.text_input("Your email address")
+if user_email and not is_valid(user_email):
+    st.warning("Invalid email. Try again.")
+
 with st.form(key='email'):
-    user_email = st.text_input("Your email address")
     destination = [user_email]
 
     user_name = st.text_input("Your name")
