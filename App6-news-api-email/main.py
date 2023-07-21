@@ -13,6 +13,6 @@ request = requests.get(url)
 content = request.json()
 
 # access the article titles and description
-for article in content['articles']:
-      print(article['title'])
-      print(article['description'])
+for article in content["articles"]:
+    print(article["title"])
+    print(article["description"])
